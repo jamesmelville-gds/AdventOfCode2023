@@ -19,67 +19,34 @@ def foundnumbers(improved):
         if char.isnumeric():
             found_numbers.append(char)
             wordnumber = ''
-            continue
-        if len(wordnumber) == 0:
-            if char in firstlettersofnumbers:
-                wordnumber = char
-                continue
-            else:
-                wordnumber = ''
-                continue
-        if len(wordnumber) == 1:
+        elif len(wordnumber) == 1:
             if wordnumber + char in ['on','tw','th','fo','fi','si','se','ei','ni']:
                 wordnumber +=char
-                continue
-            if char in firstlettersofnumbers:
-                wordnumber = char
-                continue
             else:
-                wordnumber = ''
-                continue
-        if len(wordnumber) == 2:
+                wordnumber = char
+        elif len(wordnumber) == 2:
             if wordnumber + char in ['one','two','six']:
                 found_numbers.append(wordnumbers[wordnumber + char])
                 wordnumber = char
-                continue
-            if wordnumber + char in ['thr','fou','fiv','sev','eig','nin']:
+            elif wordnumber + char in ['thr','fou','fiv','sev','eig','nin']:
                 wordnumber +=char
-                continue
-            if char in firstlettersofnumbers:
-                wordnumber = char
-                continue
-            else:
-                wordnumber = ''
-                continue
-        if len(wordnumber) == 3:
+        elif len(wordnumber) == 3:
             if wordnumber + char in ['four','five','nine']:
                 found_numbers.append(wordnumbers[wordnumber + char])
                 wordnumber = char
-                continue
-            if wordnumber + char in ['thre','seve','eigh']:
+            elif wordnumber + char in ['thre','seve','eigh']:
                 wordnumber +=char
-                continue
-            if char in firstlettersofnumbers:
-                wordnumber = char
-                continue
-            else:
-                wordnumber = ''
-                continue
-        if len(wordnumber) == 4:
+        elif len(wordnumber) == 4:
             if wordnumber + char in ['three','seven','eight']:
                 found_numbers.append(wordnumbers[wordnumber + char])
                 wordnumber = char
-                continue
-            if char in firstlettersofnumbers:
-                wordnumber = char
-                continue
-            else:
-                wordnumber = ''
-                continue
+        elif char in firstlettersofnumbers:
+            wordnumber = char
+
     return found_numbers   
 
 
-with open('1/ii/test','r') as values:
+with open('1/input','r') as values:
     sum=0
     for line in values:
         print(f'{foundnumbers(line)}')
